@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SurveyComponent } from './survey/survey.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -25,7 +26,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    SurveyComponent
+    SurveyComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
