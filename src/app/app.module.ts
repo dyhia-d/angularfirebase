@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SurveyComponent } from './survey/survey.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PresentationComponent } from './presentation/presentation.component';
+import { SurveytestComponent } from './surveytest/surveytest.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -27,7 +29,9 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     SurveyComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    PresentationComponent,
+    SurveytestComponent
   ],
   imports: [
     BrowserModule,

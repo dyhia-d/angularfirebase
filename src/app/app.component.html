@@ -1,22 +1,84 @@
-<!--The content below is only a placeholder and can be replaced.
-  <div style="text-align:center">
+<div style="text-align:center">
   <h1>Welcome to {{ title }}! This is the first page !</h1>
     <nav>
-        <a routerLink="/survey">Survey</a>
+        <a routerLink="/pres">Pres</a>
+        <a routerLink="/surveytest">Survey</a>
     </nav>
     <router-outlet></router-outlet>
+
+    <script>
+      Survey.Survey.cssType = "bootstrap";
+      Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+      
+      var json = {
+      triggers: [{ type: "complete", name: "exit1", operator: "equal", value: "Yes" },
+          { type: "complete", name: "exit2", operator: "equal", value: "Yes" }],
+      pages: [
+      { title: "What operating system do you use?",
+          questions: [
+              {type:"checkbox", name:"opSystem", title: "OS", hasOther: true, 
+                  choices:["Windows", "Linux", "Macintosh OSX"]},
+              {type:"radiogroup", name:"exit1", title:"Do you want to finish the survey?", choices: ["Yes", "No"], colCount: 0}
+          ]  
+      },
+      {   title: "What language(s) are you currently using?",
+          questions: [
+          {type:"checkbox", name:"langs",title:"Plese select from the list",
+                  colCount: 4,
+              choices:["Javascript", "Java", "Python", "CSS", "PHP", "Ruby", "C++", "C", 
+                  "Shell", "C#", "Objective-C", "R", "VimL", "Go", "Perl", "CoffeeScript", 
+                  "TeX", "Swift", "Scala", "Emacs List", "Haskell", "Lua", "Clojure", 
+                  "Matlab", "Arduino", "Makefile", "Groovy", "Puppet", "Rust", "PowerShell"]
+          },
+          {type:"radiogroup", name:"exit2", title:"Do you want to finish the survey?", choices: ["Yes", "No"], colCount: 0}
+      ]},        
+      { title: "Please enter your name and e-mail",
+          questions: [ 
+          {type: "text", name: "name", title: "Name:"}, 
+          {type: "text", name: "email", title: "Your e-mail"}]
+      }]};
+      
+      window.survey = new Survey.Model(json);
+      
+      
+      survey.onComplete.add(function(result) {
+          document.querySelector('#surveyResult').innerHTML = "result: " + JSON.stringify(result.data);
+      });
+      
+      
+      function onAngularComponentInit() {
+          Survey.SurveyNG.render("surveyElement", { 
+              model: survey 
+          });
+      }
+      var HelloApp =
+          ng.core
+              .Component({
+                  selector: 'ng-app',
+                  template: '<div id="surveyContainer" class="survey-container contentcontainer codecontainer"><div id="surveyElement"></div></div> '})
+              .Class({
+                  constructor: function() {
+                  },
+                  ngOnInit: function() {
+                      onAngularComponentInit();
+                  }
+          });
+      document.addEventListener('DOMContentLoaded', function() {
+          ng.platformBrowserDynamic.bootstrap(HelloApp);
+      });
+      
+      </script>
   
+  
+</div> 
+
+<!--<h1>{{title}}</h1><survey [json]="json"></survey>
   <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  <survey [json]="json"></survey>
-</div>--> 
-
-<h1>{{title}}</h1>
-
-<nav>
-  <a routerLink="/survey">Take Survey</a>
-</nav>
 
 <router-outlet></router-outlet>
+<app-messages></app-messages>-->
+
+
 
 
 
