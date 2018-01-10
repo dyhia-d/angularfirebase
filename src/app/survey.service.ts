@@ -7,7 +7,7 @@ export class SurveyService {
 
   surveys: AngularFireList<any>;
 
-  constructor(private database: AngularFireDatabase) {
+  constructor(database: AngularFireDatabase) {
     this.surveys= database.list('surveys');
   }
 
@@ -16,7 +16,6 @@ export class SurveyService {
   }
 
   addSurvey(survey: Survey) {
-    console.log("Je suis un survey" + survey);
     this.surveys.push(survey);
   }
 

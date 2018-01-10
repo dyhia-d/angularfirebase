@@ -1,6 +1,8 @@
 import { Survey } from '../survey.model';
 import { Component, Input, OnInit } from '@angular/core';
 import * as Survey_t from 'survey-angular';
+import { SurveyService } from '../survey.service';
+import { JsonObject } from 'survey-angular';
 
 @Component({
   selector: 'app-surveytest',
@@ -8,6 +10,15 @@ import * as Survey_t from 'survey-angular';
   styleUrls: ['./surveytest.component.css']
 })
 export class SurveytestComponent implements OnInit {
+
+  constructor(private surveySrv: SurveyService) {};
+
+  /*surveySrv:SurveyService;
+  submitForm(survey: JsonObject, score: number) {
+    var newSurvey: Survey = new Survey(survey, score);
+    this.surveySrv.addSurvey(newSurvey);
+  }*/
+  
 
   ngOnInit() {
     const json = { title: 'Product Feedback Survey Example', showProgressBar: 'top', pages: [
@@ -57,13 +68,6 @@ export class SurveytestComponent implements OnInit {
         },
           {
             type: 'rating',
-            name: 'satisfaction',
-            title: 'How satisfied are you with the Product?',
-            mininumRateDescription: 'Not Satisfied',
-            maximumRateDescription: 'Completely satisfied'
-          },
-          {
-            type: 'rating',
             name: 'recommend friends',
             visibleIf: '{satisfaction} > 3',
             title: 'How likely are you to recommend the Product to a friend or co-worker?',
@@ -91,20 +95,6 @@ export class SurveytestComponent implements OnInit {
               'low|No, the price is too low for your product',
               'high|No, the price is too high for your product'
             ]
-          },
-          {
-            type: 'multipletext',
-            name: 'pricelimit',
-            title: 'What is the... ',
-            items: [{
-              name: 'mostamount',
-              title: 'Most amount you would every pay for a product like ours'
-            },
-              {
-                name: 'leastamount',
-                title: 'The least amount you would feel comfortable paying'
-              }
-            ]
           }
         ]
       }, {
@@ -116,14 +106,30 @@ export class SurveytestComponent implements OnInit {
       }]
     };
     let surveyModel = new Survey_t.ReactSurveyModel(json);
+    //var survey: Survey = new Survey(result.data);
 
-    //var survey = new Survey_t.Model(json);
-    
+    var self = this;
+
     surveyModel.onComplete.add(function(result) {
+      //var newSurvey: Survey = new Survey(json);
       document.querySelector('#result').innerHTML = "result: " + JSON.stringify(result.data);
+      
+      var score:number = 5;
+      var json_t:JsonObject=result.data;
+
+      var newSurvey:Survey = new Survey(json_t);
+      
+      //this.surveySrv.addSurvey(this.json_t.bind(this));  
+      //setInterval(this.submitSurvey(newSurvey).bind(this));
+      setInterval(self.submitSurvey(newSurvey));
+      
     });
 
     Survey_t.SurveyNG.render('surveyElement', { model: surveyModel });
+  }
+
+  submitSurvey(survey_r: Survey) {
+    this.surveySrv.addSurvey(survey_r);
   }
 }
 

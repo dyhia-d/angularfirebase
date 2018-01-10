@@ -16,6 +16,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { SurveytestComponent } from './surveytest/surveytest.component';
+import { SurveyService } from './survey.service';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -41,7 +42,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SurveyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
