@@ -4,6 +4,8 @@ import * as Survey_t from 'survey-angular';
 import { SurveyService } from '../survey.service';
 import { JsonObject } from 'survey-angular';
 import {ChartsModule, Color} from 'ng2-charts';
+import {Router, RouterLink} from '@angular/router';
+
 
 
 @Component({
@@ -13,7 +15,7 @@ import {ChartsModule, Color} from 'ng2-charts';
 })
 export class SurveytestComponent implements OnInit {
 
-  constructor(private surveySrv: SurveyService) {};
+  constructor(private surveySrv: SurveyService, private router:Router) {};
 
   /*surveySrv:SurveyService;
   submitForm(survey: JsonObject, score: number) {
@@ -127,6 +129,8 @@ export class SurveytestComponent implements OnInit {
       //this.surveySrv.addSurvey(this.json_t.bind(this));  
       //setInterval(this.submitSurvey(newSurvey).bind(this));
       setInterval(self.submitSurvey(newSurvey));
+
+      setInterval(self.router.navigate(['/chartjs']));
       
     });
     //surveyModel.onComplete.add(this.sendDataToServer);
