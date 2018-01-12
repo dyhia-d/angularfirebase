@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as Survey_t from 'survey-angular';
 import { SurveyService } from '../survey.service';
 import { JsonObject } from 'survey-angular';
+import {ChartsModule, Color} from 'ng2-charts';
+
 
 @Component({
   selector: 'app-surveytest',
@@ -21,6 +23,7 @@ export class SurveytestComponent implements OnInit {
   
 
   ngOnInit() {
+
     const json = { title: 'Product Feedback Survey Example', showProgressBar: 'top', pages: [
       {
         questions: [{
@@ -110,13 +113,15 @@ export class SurveytestComponent implements OnInit {
 
     var self = this;
 
+    
+
     surveyModel.onComplete.add(function(result) {
+      
       //var newSurvey: Survey = new Survey(json);
       document.querySelector('#result').innerHTML = "result: " + JSON.stringify(result.data);
       
-      var score:number = 5;
+      //var score:number = 5;
       var json_t:JsonObject=result.data;
-
       var newSurvey:Survey = new Survey(json_t);
       
       //this.surveySrv.addSurvey(this.json_t.bind(this));  
@@ -124,9 +129,13 @@ export class SurveytestComponent implements OnInit {
       setInterval(self.submitSurvey(newSurvey));
       
     });
-
+    //surveyModel.onComplete.add(this.sendDataToServer);
     Survey_t.SurveyNG.render('surveyElement', { model: surveyModel });
   }
+
+  /*sendDataToServer(survey) {
+        survey.sendResult('a9cd1b88-8e41-40a2-9331-61ffc60f7060');
+    }*/
 
   submitSurvey(survey_r: Survey) {
     this.surveySrv.addSurvey(survey_r);

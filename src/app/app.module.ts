@@ -51,6 +51,10 @@ export const firebaseConfig = {
     AppRoutingModule,
     ChartsModule
   ],
+  exports: [
+    SurveytestComponent,
+    ChartjsComponent
+  ],
   providers: [SurveyService, ReportService],
   bootstrap: [AppComponent]
 })
