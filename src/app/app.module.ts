@@ -12,11 +12,17 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { SurveyComponent } from './survey/survey.component';
+//import { SurveyComponent } from './survey/survey.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { SurveytestComponent } from './surveytest/surveytest.component';
 import { SurveyService } from './survey.service';
+import { ChartjsComponent } from './chartjs/chartjs.component';
+import { AdminComponent } from './admin/admin.component';
+
+import { ChartsModule, Color } from 'ng2-charts';
+import { ReportService } from './_services/report.service';
+
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -29,10 +35,12 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    SurveyComponent,
+    //SurveyComponent,
     WelcomeComponent,
     PresentationComponent,
-    SurveytestComponent
+    SurveytestComponent,
+    ChartjsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +48,10 @@ export const firebaseConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
-  providers: [SurveyService],
+  providers: [SurveyService, ReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
