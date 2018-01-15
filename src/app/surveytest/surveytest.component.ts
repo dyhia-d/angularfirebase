@@ -123,14 +123,18 @@ export class SurveytestComponent implements OnInit {
       document.querySelector('#result').innerHTML = "result: " + JSON.stringify(result.data);
       
       //var score:number = 5;
-      var json_t:JsonObject=result.data;
-      var newSurvey:Survey = new Survey(json_t);
+      var newSurvey:Survey;
+      newSurvey = result.data;
       
       //this.surveySrv.addSurvey(this.json_t.bind(this));  
       //setInterval(this.submitSurvey(newSurvey).bind(this));
+
+      //alert('test1' + JSON.stringify(newSurvey));
+
       setInterval(self.submitSurvey(newSurvey));
 
-      setInterval(self.router.navigate(['/chartjs']));
+
+     // setInterval(self.router.navigate(['/chartjs']));
       
     });
     //surveyModel.onComplete.add(this.sendDataToServer);
@@ -143,6 +147,7 @@ export class SurveytestComponent implements OnInit {
 
   submitSurvey(survey_r: Survey) {
     this.surveySrv.addSurvey(survey_r);
+    alert(JSON.stringify(survey_r));
   }
 }
 
