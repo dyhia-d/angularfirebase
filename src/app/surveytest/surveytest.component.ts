@@ -15,17 +15,9 @@ import {Router, RouterLink} from '@angular/router';
 })
 export class SurveytestComponent implements OnInit {
 
-  constructor(private surveySrv: SurveyService, private router:Router) {};
+  constructor(private surveySrv: SurveyService, private router:Router) {}  
 
-  /*surveySrv:SurveyService;
-  submitForm(survey: JsonObject, score: number) {
-    var newSurvey: Survey = new Survey(survey, score);
-    this.surveySrv.addSurvey(newSurvey);
-  }*/
-  
-
-  ngOnInit() {
-
+  ngOnInit() {    
     const json = { title: 'Product Feedback Survey Example', showProgressBar: 'top', pages: [
       {
         questions: [{
@@ -58,15 +50,15 @@ export class SurveytestComponent implements OnInit {
             text: 'Product is affordable'
           },
             {
-              value: 'does what it claims',
+              value: 'claims',
               text: 'Product does what it claims'
             },
             {
-              value: 'better then others',
+              value: 'better',
               text: 'Product is better than other products on the market'
             },
             {
-              value: 'easy to use',
+              value: 'easy',
               text: 'Product is easy to use'
             }
           ]
@@ -111,30 +103,40 @@ export class SurveytestComponent implements OnInit {
       }]
     };
     let surveyModel = new Survey_t.ReactSurveyModel(json);
+    
     //var survey: Survey = new Survey(result.data);
-
     var self = this;
 
-    
-
     surveyModel.onComplete.add(function(result) {
+      //var n : JsonObject;
+      var score1: number;
       
+
       //var newSurvey: Survey = new Survey(json);
       document.querySelector('#result').innerHTML = "result: " + JSON.stringify(result.data);
       
       //var score:number = 5;
       var newSurvey:Survey;
       newSurvey = result.data;
+
+      newSurvey
       
       //this.surveySrv.addSurvey(this.json_t.bind(this));  
       //setInterval(this.submitSurvey(newSurvey).bind(this));
-
       //alert('test1' + JSON.stringify(newSurvey));
 
+      //alert(survey_r.getProperty('Quality'));
+      alert('test affichage quality');
+
+      let n = surveyModel.getValue('Quality');
+
+      var cat_1 = Number(n.affordable) + Number(n.claims) + Number(n.better) + Number(n.easy);
+
+      alert(cat_1);
+      
       setInterval(self.submitSurvey(newSurvey));
 
-
-     // setInterval(self.router.navigate(['/chartjs']));
+      setInterval(self.router.navigate(['/chartjs']));
       
     });
     //surveyModel.onComplete.add(this.sendDataToServer);
@@ -147,7 +149,8 @@ export class SurveytestComponent implements OnInit {
 
   submitSurvey(survey_r: Survey) {
     this.surveySrv.addSurvey(survey_r);
-    alert(JSON.stringify(survey_r));
+    //alert(JSON.stringify(survey_r));
   }
+
 }
 
