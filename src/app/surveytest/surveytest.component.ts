@@ -17,13 +17,48 @@ export class SurveytestComponent implements OnInit {
 
   constructor(private surveySrv: SurveyService, private router:Router) {}  
 
-  ngOnInit() {    
-    const json = { title: 'Product Feedback Survey Example', showProgressBar: 'top', pages: [
+  ngOnInit() {   
+    
+    var myCss = {
+      matrix: {
+          root: "table table-striped"
+      },
+      navigationButton: "button btn-lg"
+    };
+
+    const json = { title: 'Maturity Feedback Survey', showProgressBar: 'top', 
+    pages: [
+      {
+        questions: [
+          {
+            type: "radiogroup",
+                  name: "position",
+                  title: "Choose job position...",
+                  isRequired: true,
+                  colCount: 0,
+                  choices: [
+                      "1|Designer", "2|Front-end Developer", "3|Back-end Developer", "4|Database Administrator", "5|System Engineer"
+                  ],
+                  renderAs: "prettycheckbox"
+          },
+          {
+            type: "radiogroup",
+            name: "sector",
+            title: "Industrial sector...",
+            isRequired: true,
+            colCount: 0,
+            choices: [
+                "1|Services industry", "2|Manufacturing", "3|Primary sector", "4|Food processing", "5|Etc..."
+            ],
+            renderAs: "prettycheckbox"
+          }
+      ]},
       {
         questions: [{
           type: 'matrix',
           name: 'Quality',
           title: 'Please indicate if you agree or disagree with the following statements',
+          isRequired: true,
           columns: [{
             value: 1,
             text: 'Strongly Disagree'
@@ -102,30 +137,17 @@ export class SurveytestComponent implements OnInit {
         }]
       }]
     };
+
     let surveyModel = new Survey_t.ReactSurveyModel(json);
     
-    //var survey: Survey = new Survey(result.data);
     var self = this;
 
     surveyModel.onComplete.add(function(result) {
-      //var n : JsonObject;
-      var score1: number;
-      
+    document.querySelector('#result').innerHTML = "result: " + JSON.stringify(result.data);
 
-      //var newSurvey: Survey = new Survey(json);
-      document.querySelector('#result').innerHTML = "result: " + JSON.stringify(result.data);
-      
-      //var score:number = 5;
-      var newSurvey:Survey;
-      newSurvey = result.data;
+    var newSurvey:Survey;
+    newSurvey = result.data;
 
-      newSurvey
-      
-      //this.surveySrv.addSurvey(this.json_t.bind(this));  
-      //setInterval(this.submitSurvey(newSurvey).bind(this));
-      //alert('test1' + JSON.stringify(newSurvey));
-
-      //alert(survey_r.getProperty('Quality'));
       alert('test affichage quality');
 
       let n = surveyModel.getValue('Quality');
@@ -136,16 +158,13 @@ export class SurveytestComponent implements OnInit {
       
       setInterval(self.submitSurvey(newSurvey));
 
-      setInterval(self.router.navigate(['/chartjs']));
+      //setInterval(self.router.navigate(['/chartjs']));
       
     });
-    //surveyModel.onComplete.add(this.sendDataToServer);
-    Survey_t.SurveyNG.render('surveyElement', { model: surveyModel });
+
+    Survey_t.SurveyNG.render('surveyElement', { model: surveyModel , css: myCss});
   }
 
-  /*sendDataToServer(survey) {
-        survey.sendResult('a9cd1b88-8e41-40a2-9331-61ffc60f7060');
-    }*/
 
   submitSurvey(survey_r: Survey) {
     this.surveySrv.addSurvey(survey_r);
