@@ -22,6 +22,8 @@ import { AdminComponent } from './admin/admin.component';
 
 import { ChartsModule, Color } from 'ng2-charts';
 import { ReportService } from './_services/report.service';
+import { DataSharingService } from './_services/data-sharing.service';
+import { ResultsComponent } from './results/results.component';
 
 
 export const firebaseConfig = {
@@ -40,7 +42,8 @@ export const firebaseConfig = {
     PresentationComponent,
     SurveytestComponent,
     ChartjsComponent,
-    AdminComponent
+    AdminComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,7 @@ export const firebaseConfig = {
     SurveytestComponent,
     ChartjsComponent
   ],
-  providers: [SurveyService, ReportService],
+  providers: [SurveyService, ReportService, DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

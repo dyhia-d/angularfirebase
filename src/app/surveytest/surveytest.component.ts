@@ -5,6 +5,7 @@ import { SurveyService } from '../survey.service';
 import { JsonObject } from 'survey-angular';
 import {ChartsModule, Color} from 'ng2-charts';
 import {Router, RouterLink} from '@angular/router';
+import { DataSharingService } from '../_services/data-sharing.service';
 
 
 
@@ -15,7 +16,7 @@ import {Router, RouterLink} from '@angular/router';
 })
 export class SurveytestComponent implements OnInit {
 
-  constructor(private surveySrv: SurveyService, private router:Router) {}  
+  constructor(private surveySrv: SurveyService, private router:Router, public ds:DataSharingService) {}  
 
   ngOnInit() {   
     
@@ -26,7 +27,9 @@ export class SurveytestComponent implements OnInit {
       navigationButton: "button btn-lg"
     };
 
-    const json = { title: 'Maturity Feedback Survey', showProgressBar: 'top', 
+    Survey_t.StylesManager.applyTheme("darkrose");
+
+    const json = { title: 'Maturity Feedback Survey', showProgressBar: 'bottom', 
     pages: [
       {
         questions: [
@@ -48,15 +51,18 @@ export class SurveytestComponent implements OnInit {
             isRequired: true,
             colCount: 0,
             choices: [
-                "1|Services industry", "2|Manufacturing", "3|Primary sector", "4|Food processing", "5|Etc..."
+                "1|Public sector", "2|Manufacturing", "3|Financial service", "4|Transportation and logistics", "5|Technology, media and telecoms", "6|Other"
             ],
             renderAs: "prettycheckbox"
-          }
-      ]},
+          },
+        ],
+        name: "page1",
+        title: "General questions"
+      },
       {
         questions: [{
           type: 'matrix',
-          name: 'Quality',
+          name: 'Culture',
           title: 'Please indicate if you agree or disagree with the following statements',
           isRequired: true,
           columns: [{
@@ -81,37 +87,30 @@ export class SurveytestComponent implements OnInit {
             }
           ],
           rows: [{
-            value: 'affordable',
-            text: 'Product is affordable'
+            value: 'culture',
+            text: 'A culture of change is embraced within the organization'
           },
             {
-              value: 'claims',
-              text: 'Product does what it claims'
+              value: 'agility',
+              text: 'Agility is embraced in all levels of organization'
             },
             {
-              value: 'better',
-              text: 'Product is better than other products on the market'
+              value: 'risks',
+              text: 'We take measured risks in order to enable innovation'
             },
             {
-              value: 'easy',
-              text: 'Product is easy to use'
+              value: 'customer',
+              text: 'We prioritize overall customer experience over the performance of any individual channel'
+            },
+            {
+              value: 'change',
+              text: 'Our organization is able to identify the changes and quick respond to them'
             }
           ]
-        },
-          {
-            type: 'rating',
-            name: 'recommend friends',
-            visibleIf: '{satisfaction} > 3',
-            title: 'How likely are you to recommend the Product to a friend or co-worker?',
-            mininumRateDescription: 'Will not recommend',
-            maximumRateDescription: 'I will recommend'
-          },
-          {
-            type: 'comment',
-            name: 'suggestions',
-            title: 'What would make you more satisfied with the Product?',
-          }
-        ]
+        }
+        ],
+        name: "page2",
+        title: "Culture"
       }, {
         questions: [{
           type: 'radiogroup',
@@ -148,17 +147,17 @@ export class SurveytestComponent implements OnInit {
     var newSurvey:Survey;
     newSurvey = result.data;
 
-      alert('test affichage quality');
-
-      let n = surveyModel.getValue('Quality');
-
-      var cat_1 = Number(n.affordable) + Number(n.claims) + Number(n.better) + Number(n.easy);
-
-      alert(cat_1);
-      
-      setInterval(self.submitSurvey(newSurvey));
-
-      //setInterval(self.router.navigate(['/chartjs']));
+    let n = surveyModel.getValue('Culture');
+    var cat_1 = Number(n.culture) + Number(n.agility) + Number(n.risks) + Number(n.customer) + Number(n.change);
+    
+    self.ds.isData(cat_1);
+    alert('test isData : ' + self.ds.n);
+    
+    alert('test affichage culture' + cat_1);
+    
+    setInterval(self.submitSurvey(newSurvey));
+    setInterval(self.router.navigate(['/res']));
+   //setInterval(self.router.navigate(['/chartjs']));
       
     });
 

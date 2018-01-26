@@ -7,6 +7,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { SurveytestComponent } from './surveytest/surveytest.component';
 import { ChartjsComponent } from './chartjs/chartjs.component';
 import { AdminComponent } from './admin/admin.component';
+import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'pres', component: PresentationComponent},
   { path: 'surveytest', component: SurveytestComponent },
   { path: 'chartjs', component: ChartjsComponent },
+  { path: 'res', component: ResultsComponent },
   { path: 'admin', component: AdminComponent }
 ];
 
