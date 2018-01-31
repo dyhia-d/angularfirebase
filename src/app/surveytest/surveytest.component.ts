@@ -141,12 +141,14 @@ export class SurveytestComponent implements OnInit {
     
     var self = this;
 
+    //résultat en format json
     surveyModel.onComplete.add(function(result) {
     document.querySelector('#result').innerHTML = "result: " + JSON.stringify(result.data);
 
     var newSurvey:Survey;
     newSurvey = result.data;
 
+    //calcul du sous total de scoring
     let n = surveyModel.getValue('Culture');
     var cat_1 = Number(n.culture) + Number(n.agility) + Number(n.risks) + Number(n.customer) + Number(n.change);
     
@@ -168,6 +170,10 @@ export class SurveytestComponent implements OnInit {
   submitSurvey(survey_r: Survey) {
     this.surveySrv.addSurvey(survey_r);
     //alert(JSON.stringify(survey_r));
+  }
+
+  calculerMaturityLevel() {
+
   }
 
 }
