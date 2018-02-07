@@ -1,0 +1,117 @@
+@import "./fullpage.css";
+/*@import "./bootstrap.min.css";*/
+
+
+body {
+  font-family: 'Titillium Web', Arial sans-serif;
+  color: rgb(173, 46, 46);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  color: #444;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h4 {
+  font-size: 1.3em;
+}
+
+#fp-nav {
+  top: 50% !important;
+}
+
+.menu-wrapper {
+  position: fixed;
+  width: 99%;
+  z-index: 70;
+  text-align: center;
+  height: 40rem;
+  margin: -10%;
+}
+
+.menu {
+  padding: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin: 10px;
+  color: rgb(33, 19, 235);;
+  background: rgb(33, 19, 235);
+  background: rgb(221, 27, 205);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.menu li.active {
+  background: #666;
+  background: #000000;
+  color: #444;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #666;
+}
+
+.menu li.active a:hover {
+  color: #666;
+}
+
+.menu li:hover {
+  background: #444;
+}
+
+.menu li a,
+.menu li.active a {
+  padding: 9px 18px;
+  display: block;
+}
+
+.menu li.active a {
+  color: rgb(211, 193, 36);
+}
+
+.section {
+  text-align: center;
+}
+
+.section pre {
+  margin-top: 5px;
+  text-align: start;
+}
+
+.section pre code {
+  font-weight: normal;
+  font-size: 1.2em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+  padding: 25px;
+}
+
+.code-block {
+  margin: auto;
+  display: inline-block;
+}
+
+.code-block code {
+  font-size: 1em !important;
+}
+
+button {
+  display: inline-block;
+  margin: 10px;
+  color: #666;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 7px 50px;
+  border-color: white;
+}

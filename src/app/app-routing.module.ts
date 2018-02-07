@@ -10,7 +10,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/app', pathMatch: 'full' },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent},
   { path: 'pres', component: PresentationComponent},
   { path: 'surveytest', component: SurveytestComponent },

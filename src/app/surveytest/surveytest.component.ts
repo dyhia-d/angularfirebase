@@ -27,7 +27,7 @@ export class SurveytestComponent implements OnInit {
       navigationButton: "button btn-lg"
     };
 
-    Survey_t.StylesManager.applyTheme("darkrose");
+    Survey_t.StylesManager.applyTheme("stone");
 
     const json = { title: 'Maturity Feedback Survey', showProgressBar: 'bottom', 
     pages: [

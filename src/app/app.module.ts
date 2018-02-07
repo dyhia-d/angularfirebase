@@ -25,7 +25,7 @@ import { ReportService } from './_services/report.service';
 import { DataSharingService } from './_services/data-sharing.service';
 import { ResultsComponent } from './results/results.component';
 import { HeaderComponent } from './header/header.component';
-
+import { MnFullpageModule } from 'ngx-fullpage';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -54,7 +54,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
+    MnFullpageModule.forRoot()
   ],
   exports: [
     SurveytestComponent,
