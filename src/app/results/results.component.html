@@ -1,6 +1,20 @@
 <!--  https://github.com/meiblorn/ng2-fullpage   -->
 
+<link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/themes/omega/theme.css" />
+<link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/primeng.min.css" />
+
 <h3>&nbsp;</h3>
+<style>
+    h2 {
+    font-family: Roboto, sans-serif;
+    font-size: 2.7em;
+    font-weight: 100;
+    line-height: 1em;
+    letter-spacing: 0.2em;
+    color: #1d6152;
+    background-color: #fff;
+    } 
+</style>
 
 <div id="content-wrapper" [mnFullpage]="options"
      [mnFullpageNavigation]="true"
@@ -8,32 +22,48 @@
      [mnFullpageSlidesNavigation]="true"
      mnFullpageSlidesNavPosition="bottom">
 
+    <!--  dimensions   -->
     <div class="section welcome-section fp-section fp-table">
         <div class="fp-tableCell">
-            <h1>Dimensions maturity</h1>
-            <hr style="border-color: silver">
-            <h4>Create Beautiful Fullscreen Scrolling Websites (now with Angular 2 and above)!</h4>
-            <img class="logo-image" src="https://raw.githubusercontent.com/meiblorn/ng2-fullpage/develop/logo.png"/>
+            <h2>Dimensions maturity</h2>
+            <hr style="border-color: silver" style="padding-bottom:10%">
+            
+            <div style="display: block" id="chartradar">              
+                <canvas baseChart
+                  [labels]="labels"
+                  [data]="data"
+                  [colors]="colorsUndefined"
+                  [chartType]="type_3"
+                  [options]="options"
+                  [legend]="false"
+                  ></canvas>
+              </div>
         </div>
     </div>
 
-    
+    <!--  global   -->
     <div class="section install-section fp-section fp-table">
         <div class="fp-tableCell">
-            <h1>Global maturity</h1>
+            <h2>Global maturity</h2>
             <hr style="border-color: silver">
-            <div class="code-block">
-            <pre>
-                <code class="bash">{{templates.install}}</code>
-            </pre>
-            </div>
+            <p-accordion>
+                <p-accordionTab header="Header 1">
+                   Content 1
+                </p-accordionTab>
+                <p-accordionTab header="Header 2">
+                    Content 2
+                </p-accordionTab>
+                <p-accordionTab header="Header 3">
+                    Content 3    
+                </p-accordionTab>
+            </p-accordion>
         </div>
     </div>
 
-
+    <!--  suggestions   -->
     <div class="section start-use-it-now-section fp-section fp-table">
         <div class="fp-tableCell">
-            <h1>Recommendations</h1>
+            <h2>Suggestions</h2>
             <hr style="border-color: silver">
             <h4>
                 Return to <a href="https://github.com/meiblorn/ng2-fullpage">GitHub</a>

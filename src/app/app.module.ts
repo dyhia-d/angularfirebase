@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
@@ -26,6 +26,9 @@ import { DataSharingService } from './_services/data-sharing.service';
 import { ResultsComponent } from './results/results.component';
 import { HeaderComponent } from './header/header.component';
 import { MnFullpageModule } from 'ngx-fullpage';
+import { AccordionModule } from 'primeng/accordion';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -55,6 +58,8 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AppRoutingModule,
     ChartsModule,
+    AccordionModule,
+    BrowserAnimationsModule,
     MnFullpageModule.forRoot()
   ],
   exports: [
