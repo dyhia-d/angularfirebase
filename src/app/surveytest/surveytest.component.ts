@@ -48,7 +48,7 @@ export class SurveytestComponent implements OnInit {
 
     //calcul du sous total de scoring
     let n = surveyModel.getValue('Culture');
-    var cat_1 = Number(n.culture) + Number(n.agility) + Number(n.risks) + Number(n.customer) + Number(n.change);
+    var cat_1 = Number(n.culture) + Number(n.agility) + Number(n.risks) + Number(n.learning) + Number(n.change) + Number(n.believe);
     
     self.ds.isData(cat_1);
     alert('test isData : ' + self.ds.n);
