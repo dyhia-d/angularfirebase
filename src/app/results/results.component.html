@@ -6,55 +6,49 @@
 <h3>&nbsp;</h3>
 <style>
     h2 {
-    font-family: Roboto, sans-serif;
-    font-size: 2.7em;
-    font-weight: 100;
-    line-height: 1em;
-    letter-spacing: 0.2em;
-    color: #1d6152;
-    background-color: #fff;
-    } 
+        font-family: Roboto, sans-serif;
+        font-size: 2.7em;
+        font-weight: 100;
+        line-height: 1em;
+        letter-spacing: 0.2em;
+        color: #1d6152;
+        background-color: #fff;
+    }
 </style>
 
-<div id="content-wrapper" [mnFullpage]="options"
-     [mnFullpageNavigation]="true"
-     [mnFullpageKeyboardScrolling]="true"
-     [mnFullpageSlidesNavigation]="true"
-     mnFullpageSlidesNavPosition="bottom">
+<div id="content-wrapper" [mnFullpage]="options" [mnFullpageNavigation]="true" [mnFullpageKeyboardScrolling]="true" [mnFullpageSlidesNavigation]="true"
+    mnFullpageSlidesNavPosition="bottom">
 
     <!--  dimensions   -->
     <div class="section welcome-section fp-section fp-table">
         <div class="fp-tableCell">
             <h2>Dimensions maturity</h2>
             <hr style="border-color: silver" style="padding-bottom:10%">
-            
-            <div style="display: block" id="chartradar">              
-                <canvas baseChart
-                  [labels]="labels"
-                  [data]="data"
-                  [colors]="colorsUndefined"
-                  [chartType]="type_3"
-                  [options]="options"
-                  [legend]="false"
-                  ></canvas>
-              </div>
+
+            <div style="display: block" id="chartradar">
+                <canvas baseChart [labels]="labels" [data]="data" [colors]="lineChartColors" [chartType]="type_3" [options]="options" [legend]="false"></canvas>
+            </div>
         </div>
     </div>
 
     <!--  global   -->
     <div class="section install-section fp-section fp-table">
         <div class="fp-tableCell">
-            <h2>Global maturity</h2>
+            <h4>Your position in the maturity model</h4>
+            <h3 style="color:orange;">{{myHero}}</h3>
             <hr style="border-color: silver">
             <p-accordion>
-                <p-accordionTab header="Header 1">
-                   Content 1
+                <p-accordionTab header="Level 1 : Legacy systems">
+                    Content 1
                 </p-accordionTab>
-                <p-accordionTab header="Header 2">
+                <p-accordionTab header="Level 2 : Digital novice">
                     Content 2
                 </p-accordionTab>
-                <p-accordionTab header="Header 3">
-                    Content 3    
+                <p-accordionTab header="Level 3 : Optimised systems">
+                    Content 3
+                </p-accordionTab>
+                <p-accordionTab header="Level 4 : Innovative / Intuitive systems">
+                    Content 3
                 </p-accordionTab>
             </p-accordion>
         </div>
@@ -65,16 +59,59 @@
         <div class="fp-tableCell">
             <h2>Suggestions</h2>
             <hr style="border-color: silver">
-            <h4>
-                Return to <a href="https://github.com/meiblorn/ng2-fullpage">GitHub</a>
-                or start reading <a href="docs/index.html">docs</a>
-                Return to <a href="https://github.com/meiblorn/ng2-fullpage">GitHub</a>
-                or start reading <a href="docs/index.html">docs</a>
-                Return to <a href="https://github.com/meiblorn/ng2-fullpage">GitHub</a>
-                or start reading <a href="docs/index.html">docs</a>
-                Return to <a href="https://github.com/meiblorn/ng2-fullpage">GitHub</a>
-                or start reading <a href="docs/index.html">docs</a>
-            </h4>
+            <p-accordion>
+                <p-accordionTab header="Overall suggestions" [selected]="true">
+                    show={{myHero}}
+                    <div *ngIf='myHero == "Legacy system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let l of rec_legacy">
+                                {{l}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Digital novice"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let l of rec_novice">
+                                {{l}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Optimised system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let l of rec_optimised">
+                                {{l}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Innovative system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let l of rec_innovative">
+                                {{l}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+
+                </p-accordionTab>
+                <p-accordionTab header="Culture">
+                    Content 1
+                </p-accordionTab>
+                <p-accordionTab header="IS resources">
+                    Content 2
+                </p-accordionTab>
+                <p-accordionTab header="Business processes">
+                    Content 3
+                </p-accordionTab>
+                <p-accordionTab header="IT infrastructure">
+                    Content 4
+                </p-accordionTab>
+                <p-accordionTab header="IS Strategy and alignment">
+                    Content 5
+                </p-accordionTab>
+            </p-accordion>
         </div>
     </div>
 </div>

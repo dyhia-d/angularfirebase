@@ -25,8 +25,11 @@ import { ReportService } from './_services/report.service';
 import { DataSharingService } from './_services/data-sharing.service';
 import { ResultsComponent } from './results/results.component';
 import { HeaderComponent } from './header/header.component';
+
+
 import { MnFullpageModule } from 'ngx-fullpage';
 import { AccordionModule } from 'primeng/accordion';
+import { CardModule } from 'primeng/card';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
@@ -59,6 +62,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     ChartsModule,
     AccordionModule,
+    CardModule,
     BrowserAnimationsModule,
     MnFullpageModule.forRoot()
   ],
