@@ -56,8 +56,8 @@ export class SurveytestComponent implements OnInit {
     var cat_culture = Number(c.culture) + Number(c.agility) + Number(c.risks) + Number(c.learning) + Number(c.change) + Number(c.believe);
     var cat_resources = Number(i.budget) + Number(i.skills) + Number(i.resources) + Number(ib.management) + Number(ib.topmanagement);
     var cat_bp = Number(b.documentedprocesses) + Number(b.respondchange) + Number(b.understanding) + Number(b.bpimprov);
-    var cat_tech = Number(t.integrate) + Number(t.modern) + Number(t.integrateiot) + Number(t.initiativeiot) + Number(t.hardware);
-    var cat_strat = Number(s.strategy) + Number(s.modules) + Number(s.scope) + Number(s.role) + Number(s.cleargoals) + Number(sb.vision) + Number(sb.goals);
+    var cat_tech = Number(t.integrate) + Number(t.modern) + Number(t.role) + Number(t.initiativeiot) + Number(t.hardware)+ Number(t.hardware)+ Number(t.supplychain);
+    var cat_strat = Number(s.strategy) + Number(s.modules) + Number(s.scope) + Number(s.cleargoals) + Number(sb.vision) + Number(sb.goals);
 
     var heroes:number[]= [cat_culture, cat_resources, cat_bp, cat_tech, cat_strat];
 

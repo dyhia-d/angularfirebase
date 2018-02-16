@@ -4,7 +4,8 @@ import { MnFullpageOptions, MnFullpageService } from 'ngx-fullpage';
 import {BrowserModule} from '@angular/platform-browser'
 import {ChartsModule, Color} from 'ng2-charts';
 import { JsonObject } from 'survey-angular';
-import { legacy, novice, rec_opt_manu, optimised } from '../variable';
+import { legacy, novice, innovative, optimised } from '../variable';
+import { tab_culture_legacy, tab_resource_legacy, tab_bp_legacy, tab_infrastructure_legacy, tab_strategy_legacy } from '../variable';
 
 @Component({
   selector: 'app-results',
@@ -18,6 +19,14 @@ export class ResultsComponent implements OnInit {
   rec_legacy:String[] = legacy;
   rec_novice:String[] = novice;
   rec_optimised:String[] = optimised;
+  rec_innovative:String[] = innovative;
+
+  cul:String[] = tab_culture_legacy;
+  isl:String[] = tab_resource_legacy;
+  bpl:String[] = tab_bp_legacy;
+  inl:String[] = tab_infrastructure_legacy;
+  stl:String[] = tab_strategy_legacy;
+
 
   @Input() public option: MnFullpageOptions = new MnFullpageOptions({
     controlArrows: false,
@@ -44,16 +53,20 @@ export class ResultsComponent implements OnInit {
     this.fullpageService.destroy('all'); 
   }
 
+  cat1:number = this.ds.heroes[0] / 6;
+  cat2:number = this.ds.heroes[1] / 5;
+  cat3:number = this.ds.heroes[2] / 4;
+  cat4:number = this.ds.heroes[3] / 6;
+  cat5:number = this.ds.heroes[4] / 7;
 
-
-  cat1:number = Math.floor(Math.random() * 4) + 1 ;
+  /*cat1:number = Math.floor(Math.random() * 4) + 1 ;
   cat2:number = Math.floor(Math.random() * 4) + 1 ;
   cat3:number = Math.floor(Math.random() * 4) + 1 ;
   cat4:number = Math.floor(Math.random() * 4) + 1 ;
-  cat5:number = Math.floor(Math.random() * 4) + 1 ;
+  cat5:number = Math.floor(Math.random() * 4) + 1 ;*/
  
-  //matu_globale = this.ds.heroes[0] + this.ds.heroes[1] + this.ds.heroes[2] + this.ds.heroes[3] + this.ds.heroes[4];
-  matu_globale = Math.floor(Math.random() * 112) + 1 ;
+  matu_globale = this.ds.heroes[0] + this.ds.heroes[1] + this.ds.heroes[2] + this.ds.heroes[3] + this.ds.heroes[4];
+  //matu_globale = Math.floor(Math.random() * 112) + 1 ;
   
   calcul_maturity() {
     if (this.matu_globale < 55) {
@@ -70,11 +83,6 @@ export class ResultsComponent implements OnInit {
   name:string;
   labels:string[] = ['Culture', 'IS resources', 'Business processes', 'IT infrastructure', 'IS Strategy and IT alignment'];
   
-  /*cat1:number = this.ds.heroes[0] / 6;
-  cat2:number = this.ds.heroes[1] / 5;
-  cat3:number = this.ds.heroes[2] / 4;
-  cat4:number = this.ds.heroes[3] / 6;
-  cat5:number = this.ds.heroes[4] / 7;*/
 
 
   data:number[] = [this.cat1, this.cat2, this.cat3, this.cat4, this.cat5];

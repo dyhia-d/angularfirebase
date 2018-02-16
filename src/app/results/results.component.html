@@ -97,19 +97,54 @@
 
                 </p-accordionTab>
                 <p-accordionTab header="Culture">
-                    Content 1
+                    <div *ngIf='myHero == "Legacy system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of cul">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
                 </p-accordionTab>
                 <p-accordionTab header="IS resources">
-                    Content 2
+                    <div *ngIf='myHero == "Legacy system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let i of isl">
+                                {{i}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
                 </p-accordionTab>
                 <p-accordionTab header="Business processes">
-                    Content 3
+                    <div *ngIf='myHero == "Legacy system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let b of bpl">
+                                {{b}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
                 </p-accordionTab>
                 <p-accordionTab header="IT infrastructure">
-                    Content 4
+                    <div *ngIf='myHero == "Legacy system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let in of inl">
+                                {{in}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
                 </p-accordionTab>
                 <p-accordionTab header="IS Strategy and alignment">
-                    Content 5
+                    <div *ngIf='myHero == "Legacy system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let s of stl">
+                                {{s}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
                 </p-accordionTab>
             </p-accordion>
         </div>
