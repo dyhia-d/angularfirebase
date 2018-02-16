@@ -39,16 +39,16 @@
             <hr style="border-color: silver">
             <p-accordion>
                 <p-accordionTab header="Level 1 : Legacy systems">
-                    Content 1
+                    Companies are in legacy systems: ERP monolithic or that do not integrate with other existing systems or companies do not have ERP.
                 </p-accordionTab>
                 <p-accordionTab header="Level 2 : Digital novice">
-                    Content 2
+                    At level 2, companies are no longer in the legacy of systems. The ERP strategy has been reviewed and updated, or created if none existed. Companies integrate cloud technologies with their ERP and take some of their applications into the cloud.
                 </p-accordionTab>
                 <p-accordionTab header="Level 3 : Optimised systems">
-                    Content 3
+                    Level 3 is based on the optimization of existing systems by exploiting the possibilities that can bring a gain of productivity, or even a competitive advantage in comparison with the competition.
                 </p-accordionTab>
                 <p-accordionTab header="Level 4 : Innovative / Intuitive systems">
-                    Content 3
+                    The physical and digital world mix. Companies are mature enough to integrate technologies such as Big Data, Virtual Reality, IoT etc. with their ERP and optimize their use.
                 </p-accordionTab>
             </p-accordion>
         </div>
@@ -61,7 +61,7 @@
             <hr style="border-color: silver">
             <p-accordion>
                 <p-accordionTab header="Overall suggestions" [selected]="true">
-                    show={{myHero}}
+                    {{myHero}}
                     <div *ngIf='myHero == "Legacy system"'>
                         <ul>
                             <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let l of rec_legacy">
@@ -105,6 +105,30 @@
                             <br />
                         </ul>
                     </div>
+                    <div *ngIf='myHero == "Digital novice"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of cun">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Optimised system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of cuo">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Innovative system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of cui">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
                 </p-accordionTab>
                 <p-accordionTab header="IS resources">
                     <div *ngIf='myHero == "Legacy system"'>
@@ -115,11 +139,60 @@
                             <br />
                         </ul>
                     </div>
+                    <div *ngIf='myHero == "Digital novice"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let i of isn">
+                                {{i}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Optimised system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let i of iso">
+                                {{i}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Innovative system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let i of isi">
+                                {{i}}
+                            </li>
+                            <br />
+                        </ul>
+                    
+                    </div>
                 </p-accordionTab>
                 <p-accordionTab header="Business processes">
                     <div *ngIf='myHero == "Legacy system"'>
                         <ul>
                             <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let b of bpl">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Digital novice"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let b of bpn">
+                                {{b}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Optimised system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let b of bpo">
+                                {{b}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Innovative system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let b of bpi">
                                 {{b}}
                             </li>
                             <br />
@@ -129,8 +202,32 @@
                 <p-accordionTab header="IT infrastructure">
                     <div *ngIf='myHero == "Legacy system"'>
                         <ul>
-                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let in of inl">
-                                {{in}}
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of inl">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Digital novice"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of inn">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Optimised system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of ino">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Innovative system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of ini">
+                                {{c}}
                             </li>
                             <br />
                         </ul>
@@ -139,8 +236,32 @@
                 <p-accordionTab header="IS Strategy and alignment">
                     <div *ngIf='myHero == "Legacy system"'>
                         <ul>
-                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let s of stl">
-                                {{s}}
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of stl">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Digital novice"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of stn">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Optimised system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of sto">
+                                {{c}}
+                            </li>
+                            <br />
+                        </ul>
+                    </div>
+                    <div *ngIf='myHero == "Innovative system"'>
+                        <ul>
+                            <li style="font-size:0.8rem; padding-top:10px;" *ngFor="let c of sti">
+                                {{c}}
                             </li>
                             <br />
                         </ul>

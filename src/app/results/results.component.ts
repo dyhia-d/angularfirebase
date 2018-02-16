@@ -4,8 +4,11 @@ import { MnFullpageOptions, MnFullpageService } from 'ngx-fullpage';
 import {BrowserModule} from '@angular/platform-browser'
 import {ChartsModule, Color} from 'ng2-charts';
 import { JsonObject } from 'survey-angular';
-import { legacy, novice, innovative, optimised } from '../variable';
+import { jsonrec, legacy, novice, innovative, optimised } from '../variable';
 import { tab_culture_legacy, tab_resource_legacy, tab_bp_legacy, tab_infrastructure_legacy, tab_strategy_legacy } from '../variable';
+import { tab_culture_novice, tab_resource_novice, tab_bp_novice, tab_infrastructure_novice, tab_strategy_novice } from '../variable';
+import { tab_culture_optimised, tab_resource_optimised, tab_bp_optimised, tab_infrastructure_optimised, tab_strategy_optimised } from '../variable';
+import { tab_culture_inno, tab_resource_inno, tab_bp_inno, tab_infrastructure_inno, tab_strategy_inno } from '../variable';
 
 @Component({
   selector: 'app-results',
@@ -26,6 +29,26 @@ export class ResultsComponent implements OnInit {
   bpl:String[] = tab_bp_legacy;
   inl:String[] = tab_infrastructure_legacy;
   stl:String[] = tab_strategy_legacy;
+
+  cun:String[] = tab_culture_novice;
+  isn:String[] = tab_resource_novice;
+  bpn:String[] = tab_bp_novice;
+  inn:String[] = tab_infrastructure_novice;
+  stn:String[] = tab_strategy_novice;
+
+  cuo:String[] = tab_culture_optimised;
+  iso:String[] = tab_resource_optimised;
+  bpo:String[] = tab_bp_optimised;
+  ino:String[] = tab_infrastructure_optimised;
+  sto:String[] = tab_strategy_optimised;
+
+  cui:String[] = tab_culture_inno;
+  isi:String[] = tab_resource_inno;
+  bpi:String[] = tab_bp_inno;
+  ini:String[] = tab_infrastructure_inno;
+  sti:String[] = tab_strategy_inno;
+
+
 
 
   @Input() public option: MnFullpageOptions = new MnFullpageOptions({
@@ -56,8 +79,8 @@ export class ResultsComponent implements OnInit {
   cat1:number = this.ds.heroes[0] / 6;
   cat2:number = this.ds.heroes[1] / 5;
   cat3:number = this.ds.heroes[2] / 4;
-  cat4:number = this.ds.heroes[3] / 6;
-  cat5:number = this.ds.heroes[4] / 7;
+  cat4:number = this.ds.heroes[3] / 7;
+  cat5:number = this.ds.heroes[4] / 6;
 
   /*cat1:number = Math.floor(Math.random() * 4) + 1 ;
   cat2:number = Math.floor(Math.random() * 4) + 1 ;

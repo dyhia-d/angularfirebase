@@ -17,7 +17,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { SurveytestComponent } from './surveytest/surveytest.component';
 import { SurveyService } from './survey.service';
-import { ChartjsComponent } from './chartjs/chartjs.component';
 import { AdminComponent } from './admin/admin.component';
 
 import { ChartsModule, Color } from 'ng2-charts';
@@ -47,7 +46,6 @@ export const firebaseConfig = {
     WelcomeComponent,
     PresentationComponent,
     SurveytestComponent,
-    ChartjsComponent,
     AdminComponent,
     ResultsComponent,
     HeaderComponent
@@ -66,8 +64,7 @@ export const firebaseConfig = {
     MnFullpageModule.forRoot()
   ],
   exports: [
-    SurveytestComponent,
-    ChartjsComponent
+    SurveytestComponent
   ],
   providers: [SurveyService, ReportService, DataSharingService],
   bootstrap: [AppComponent]
